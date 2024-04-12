@@ -64,16 +64,7 @@ const ViewMusic = () => {
           </div>
         ) : (
           currentMusic.map((mus, index) => {
-            const {
-              artist,
-              audioURL,
-              description,
-              id,
-              imageURL,
-              info,
-              releaseDate,
-              title,
-            } = mus;
+            const { artist, id, imageURL, title } = mus;
             return (
               <div key={index}>
                 <Link to={`/view-music/${id}`}>

@@ -70,18 +70,9 @@ const ViewVideo = () => {
           </div>
         ) : (
           currentVideos.map((vid, index) => {
-            const {
-              artist,
-              audioURL,
-              description,
-              id,
-              imageURL,
-              info,
-              releaseDate,
-              title,
-            } = vid;
+            const { artist, id, imageURL, title } = vid;
             return (
-              <div key={index} className="px-2">
+              <div key={index}>
                 <Link to={`/view-videos/${id}`}>
                   <div className="flex flex-row border border-gray-200 bg-[#f9f9f9]  mb-2">
                     <div className=" flex justify-center items-center">

@@ -40,8 +40,8 @@ const ViewNews = () => {
   };
 
   return (
-    <div className="w-full min-h-[100vh] flex items-center flex-col">
-      <div className="my-4">
+    <div className="w-full min-h-[100vh] flex items-center flex-col px-4">
+      <div className="my-4 mx-4">
         <input
           type="text"
           placeholder="Search news by title"
@@ -70,7 +70,7 @@ const ViewNews = () => {
                     <div className=" flex justify-center items-center ">
                       <img
                         src={imageURL}
-                        className="w-24 h-24 lg:w-36 lg:h-36 rounded-md lg:mr-4 object-cover"
+                        className=" h-24 w-36 lg:w-36 lg:h-36 rounded-md lg:mr-4 object-cover"
                         alt={title}
                       />
                     </div>
