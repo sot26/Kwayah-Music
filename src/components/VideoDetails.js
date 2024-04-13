@@ -43,6 +43,16 @@ const VideoDetails = () => {
       toast.error(error.message);
     }
   };
+
+  const downloadVideo = () => {
+    const link = document.createElement("a");
+    link.href = video.videoURL;
+    link.download = "video.mp4";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="flex  justify-center mx-auto px-4 sm:px-[150px] py-8">
       {video ? (
@@ -51,7 +61,7 @@ const VideoDetails = () => {
             <div className="max-w-[700px]">
               <img
                 src={video.imageURL}
-                alt="News Image"
+                alt="Video Image"
                 className=" rounded-lg mb-4 max-h-[400px] w-auto"
               />
               <p className="text-gray-600 mb-2 font-semibold">
@@ -70,6 +80,12 @@ const VideoDetails = () => {
               <video controls className="w-full h-auto">
                 <source src={video.videoURL}></source>
               </video>
+              <button
+                className="bg-black text-white font-bold py-2 px-4 rounded mt-4"
+                onClick={downloadVideo}
+              >
+                Download Video
+              </button>
             </div>
             <div className="comment-section">
               <h3 className="text-xl font-semibold text-black mb-4">

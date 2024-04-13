@@ -23,7 +23,6 @@ const MusicDetails = () => {
     };
 
     getMusic();
-    console.log(music);
   }, [id]);
 
   const handleComment = async (e) => {
@@ -44,6 +43,16 @@ const MusicDetails = () => {
       toast.error(error.message);
     }
   };
+
+  const downloadAudio = () => {
+    const link = document.createElement("a");
+    link.href = music.audioURL;
+    link.download = "music.mp3";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="flex  justify-center mx-auto px-4 sm:px-[150px] py-8">
       {music ? (
@@ -71,6 +80,12 @@ const MusicDetails = () => {
               <audio controls>
                 <source src={music.audioURL}></source>
               </audio>
+              <button
+                className="bg-black text-white py-2 px-4 rounded-md cursor-pointer mt-4"
+                onClick={downloadAudio}
+              >
+                Download Audio
+              </button>
             </div>
             <div className="comment-section">
               <h3 className="text-xl font-semibold text-black mb-4">
