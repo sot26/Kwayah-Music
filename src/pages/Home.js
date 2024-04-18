@@ -310,7 +310,7 @@ const Home = () => {
               ) : (
                 video.map((vid, index) => (
                   <div key={index} className="mb-6">
-                    <Link to={`/view-video/${vid.id}`}>
+                    <Link to={`/view-videos/${vid.id}`}>
                       <div className="flex items-center">
                         <img
                           src={vid.imageURL}
