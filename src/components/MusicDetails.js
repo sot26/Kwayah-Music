@@ -77,15 +77,30 @@ const MusicDetails = () => {
                 {music.description}
               </p>
               <p className="text-gray-600 mb-4 text-justify">{music.info}</p>
-              <audio controls>
-                <source src={music.audioURL}></source>
-              </audio>
+              {music.audioURL ? (
+                <audio controls>
+                  <source src={music.audioURL}></source>
+                </audio>
+              ) : null}
               <button
                 className="bg-black text-white py-2 px-4 rounded-md cursor-pointer mt-4"
                 onClick={downloadAudio}
               >
                 Download Audio
               </button>
+              <p className="text-xl font-bold mt-6">Listen here:</p>
+              {music?.ytURL ? (
+                <div className="w-full md:w-auto my-3">
+                  <iframe
+                    className="w-full h-auto md:w-[500px] lg:w-[680px] sm:h-[300px] "
+                    src={music.ytURL}
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              ) : null}
             </div>
             <div className="comment-section">
               <h3 className="text-xl font-semibold text-black mb-4">

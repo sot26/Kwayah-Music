@@ -77,15 +77,31 @@ const VideoDetails = () => {
                 {video.description}
               </p>
               <p className="text-gray-600 mb-4 text-justify">{video.info}</p>
-              <video controls className="w-full h-auto">
-                <source src={video.videoURL}></source>
-              </video>
-              <button
-                className="bg-black text-white font-bold py-2 px-4 rounded mt-4"
-                onClick={downloadVideo}
-              >
-                Download Video
-              </button>
+              {video?.ytURL ? (
+                <div className="w-full md:w-auto my-3 md:my-9">
+                  <iframe
+                    className="w-full h-auto md:w-[500px] lg:w-[680px] sm:h-[300px] "
+                    src={video.ytURL}
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                  ></iframe>
+                </div>
+              ) : null}
+              {video.videoURL ? (
+                <video controls className="w-full h-auto">
+                  <source src={video.videoURL}></source>
+                </video>
+              ) : null}
+              {video.videoURL ? (
+                <button
+                  className="bg-black text-white font-bold py-2 px-4 rounded mt-4"
+                  onClick={downloadVideo}
+                >
+                  Download Video
+                </button>
+              ) : null}
             </div>
             <div className="comment-section">
               <h3 className="text-xl font-semibold text-black mb-4">

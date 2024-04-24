@@ -20,7 +20,10 @@ const Home = () => {
     const getMusic = async () => {
       const music = await getDocs(musicDocRef);
       setMusic(
-        music.docs.slice(0, 5).map((doc) => ({ ...doc.data(), id: doc.id }))
+        music.docs
+          .slice(0, 5)
+          .map((doc) => ({ ...doc.data(), id: doc.id }))
+          .reverse()
       );
     };
     getMusic();
@@ -30,10 +33,13 @@ const Home = () => {
   useEffect(() => {
     const getNews = async () => {
       const newsSnapshot = await getDocs(newsDocRef);
-      const newsData = newsSnapshot.docs.slice(0, 10).map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
+      const newsData = newsSnapshot.docs
+        .slice(0, 10)
+        .map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }))
+        .reverse();
       setNews(newsData);
     };
     getNews();
@@ -44,7 +50,10 @@ const Home = () => {
     const getVideo = async () => {
       const video = await getDocs(videoDocRef);
       setVideo(
-        video.docs.slice(0, 5).map((doc) => ({ ...doc.data(), id: doc.id }))
+        video.docs
+          .slice(0, 5)
+          .map((doc) => ({ ...doc.data(), id: doc.id }))
+          .reverse()
       );
     };
     getVideo();

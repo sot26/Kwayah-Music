@@ -15,15 +15,18 @@ const ViewMusic = () => {
     const getMusic = async () => {
       const musicSnapshot = await getDocs(docRef);
       setMusic(
-        musicSnapshot.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }))
+        musicSnapshot.docs
+          .map((doc) => ({
+            ...doc.data(),
+            id: doc.id,
+          }))
+          .reverse() // Reverse the array here
       );
     };
     getMusic();
   }, []);
 
+  console.log(music);
   // Filtered music based on search term
   const filteredMusic = music.filter(
     (mus) =>
